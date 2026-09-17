@@ -3,11 +3,19 @@ import { generateUUID, createImageThumbnail, createVideoThumbnail } from '../uti
 export async function fetchMemories() {
   try {
     const res = await fetch('/api/memories');
-    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+    if (!res.ok) {
+      console.warn(`[MemoriesService] API not reachable (status: ${res.status}), using empty list.`);
+      return [];
+    }
+    const contentType = res.headers.get('content-type');
+    if (!contentType || !contentType.includes('application/json')) {
+      console.warn('[MemoriesService] API did not return JSON, using empty list.');
+      return [];
+    }
     const data = await res.json();
     return data.memories || [];
   } catch (error) {
-    console.error('[MemoriesService] Error fetching memories:', error);
+    console.warn('[MemoriesService] Error fetching memories (running in static mode):', error.message);
     return [];
   }
 }

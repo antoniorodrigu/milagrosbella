@@ -160,7 +160,7 @@ function neonStorageDevPlugin() {
 }
 
 export default defineConfig({
-  base: './', // Relative base for GitHub Pages compatibility
+  base: '/milagrosbella/',
   plugins: [neonStorageDevPlugin()],
   build: {
     outDir: 'dist',
