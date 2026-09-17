@@ -39,7 +39,7 @@ export class AccessibilityView {
     // 1. Flowers HTML - pure editorial, zero nested cards
     const flowersHtml = gardenData.flowers.map(f => {
       const paragraphsHtml = (f.card.paragraphs || [])
-        .map(p => `<p class="letter-paragraph">${p}</p>`)
+        .map(p => `<p class="letter-paragraph">${p.replace(/\n/g, '<br/>')}</p>`)
         .join('');
 
       const highlightHtml = f.card.highlight
@@ -47,6 +47,7 @@ export class AccessibilityView {
           <div class="letter-quote-block">
             <div class="letter-quote-glyph" aria-hidden="true">“</div>
             <p class="letter-quote-highlight">${f.card.highlight}</p>
+            ${f.card.highlightSub ? `<p class="letter-quote-sub">${f.card.highlightSub}</p>` : ''}
             <div class="letter-quote-glyph close-glyph" aria-hidden="true">”</div>
           </div>
         `
@@ -58,7 +59,7 @@ export class AccessibilityView {
 
       return `
         <div class="letter-flower-article">
-          <span class="letter-kicker">${f.subtitle || 'Celebrando tu ascenso'}</span>
+          <span class="letter-kicker">${f.subtitle || 'Un comienzo tranquilo'}</span>
           <h3 class="letter-article-title">${f.card.title}</h3>
           
           <div class="letter-article-prose">
@@ -110,6 +111,7 @@ export class AccessibilityView {
           <span class="letter-eyebrow">DEDICATORIA ESPECIAL</span>
           <h1 class="letter-title">Un jardín para ${gardenData.dedication.recipient}</h1>
           <p class="letter-subtitle">“${gardenData.dedication.subtitle}”</p>
+          <p class="letter-discreet-note" style="font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; color: rgba(247, 184, 198, 0.8); margin-top: 6px;">“${gardenData.dedication.discreet}”</p>
           ${createDivider(true)}
         </div>
 
@@ -117,7 +119,7 @@ export class AccessibilityView {
         <section class="letter-section">
           <div class="letter-section-header">
             <h2 class="letter-section-title">Detalles y Flores</h2>
-            <p class="letter-section-subtitle">Rosas cultivadas con historias y motivos para celebrar.</p>
+            <p class="letter-section-subtitle">Flores cultivadas con calma y pensamientos para conocerte.</p>
           </div>
           
           <div class="letter-section-content">
@@ -131,7 +133,7 @@ export class AccessibilityView {
         <section class="letter-section">
           <div class="letter-section-header">
             <h2 class="letter-section-title">Notas de la banca</h2>
-            <p class="letter-section-subtitle">Tres pensamientos para leer con calma.</p>
+            <p class="letter-section-subtitle">Cinco pensamientos para leer con calma.</p>
           </div>
 
           <div class="letter-verses-flow">
@@ -155,30 +157,49 @@ export class AccessibilityView {
 
         ${createDivider(false)}
 
-        <!-- Section 4: Momentos por florecer -->
+        <!-- Section 4: Momentos que todavía no existen -->
         <section class="letter-section">
           <div class="letter-section-header">
-            <h2 class="letter-section-title">Momentos por florecer</h2>
+            <h2 class="letter-section-title">Momentos que todavía no existen</h2>
             <p class="letter-section-subtitle">Espacios que esperan nuevas historias por escribir.</p>
           </div>
 
           <div class="letter-future-block">
-            <p class="letter-future-line">“Todavía no hay muchas fotografías aquí.”</p>
-            <p class="letter-future-line highlight-phrase">“Y quizás eso sea justamente lo bonito.”</p>
-            <p class="letter-future-line">“Hay momentos que todavía no han sucedido.”</p>
+            <p class="letter-future-line">“Este espacio está casi vacío.”</p>
+            <p class="letter-future-line highlight-phrase">“Y me gusta que sea así.”</p>
+            <p class="letter-future-line">“Significa que todavía quedan conversaciones, lugares, fotografías y pequeños momentos que podrían algún día llegar hasta aquí.”</p>
             <p class="letter-future-subtext">
-              Este jardín apenas comienza. Nuevas flores y detalles aparecerán conforme tengamos más historias que contar.
+              No quiero inventar recuerdos antes de vivirlos. Prefiero dejarles un lugar por si algún día llegan.
             </p>
+          </div>
+        </section>
+
+        ${createDivider(true)}
+
+        <!-- Section 5: Cierre especial - Sin prisa -->
+        <section class="letter-section" style="text-align: center;">
+          <div class="letter-section-header">
+            <h2 class="letter-section-title">${gardenData.finalLetter.title}</h2>
+          </div>
+
+          <div class="letter-article-prose" style="max-width: 600px; margin: 0 auto;">
+            ${gardenData.finalLetter.paragraphs.map(p => `<p class="letter-paragraph">${p}</p>`).join('')}
+            
+            <div class="letter-quote-block" style="margin: 28px 0;">
+              <div class="letter-quote-glyph" aria-hidden="true">“</div>
+              <p class="letter-quote-highlight">${gardenData.finalLetter.highlight}</p>
+              <div class="letter-quote-glyph close-glyph" aria-hidden="true">”</div>
+            </div>
           </div>
         </section>
 
         <!-- Romantic Dedication Footer -->
         <footer class="letter-footer">
-          ${createDivider(true)}
+          ${createDivider(false)}
           
           <div class="letter-footer-block">
-            <p class="letter-footer-note">Creado con cariño y cuidado</p>
-            <h3 class="letter-footer-name">Para Milagros</h3>
+            <p class="letter-footer-note">Un detalle sencillo para ti</p>
+            <h3 class="letter-footer-name">${gardenData.finalLetter.signOff}</h3>
             <div class="letter-heart-symbol" aria-hidden="true">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" 

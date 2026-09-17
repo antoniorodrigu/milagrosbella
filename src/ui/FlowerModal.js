@@ -54,12 +54,13 @@ export class FlowerModal {
     const card = flowerData.card;
 
     const paragraphsHtml = (card.paragraphs || [])
-      .map(p => `<p>${p}</p>`)
+      .map(p => `<p>${p.replace(/\n/g, '<br/>')}</p>`)
       .join('');
 
     const highlightHtml = card.highlight
       ? `<div class="card-highlight-area">
           <p class="highlight-main-text">${card.highlight}</p>
+          ${card.highlightSub ? `<p class="highlight-sub-text">${card.highlightSub}</p>` : ''}
         </div>`
       : '';
 
@@ -69,7 +70,7 @@ export class FlowerModal {
 
     content.innerHTML = `
       <div class="card-category-label">
-        <span>${flowerData.subtitle || 'Celebrando tu ascenso'}</span>
+        <span>${flowerData.subtitle || 'Un comienzo tranquilo'}</span>
       </div>
 
       <h2 class="card-title">${card.title || flowerData.title}</h2>

@@ -3,133 +3,213 @@
  * UN JARDÍN PARA MILAGROS - ARCHIVO CENTRAL DE DATOS Y CONTENIDOS
  * ==============================================================================
  * 
- * Estructura de datos para gestionar los detalles, flores, notas y recuerdos.
- * Diseñado con estética sobria, elegante y respetuosa.
+ * Dedicatoria romántica, elegante, sincera y respetuosa para Milagros.
+ * Transmite interés genuino, curiosidad y calma para conocerla poco a poco.
  */
 
 export const gardenData = {
-  // Dedicatoria y pantalla inicial
+  // Dedicatoria y portada inicial
   dedication: {
     recipient: "Milagros",
-    subtitle: "Hay noticias que merecen algo más que un simple ‘felicidades’.",
+    subtitle: "Hay personas que llegan sin avisar y despiertan ganas de conocerlas un poco más.",
+    discreet: "Este pequeño espacio nació de esa curiosidad.",
     enterButtonText: "Entrar al jardín",
     initialTourSubtitles: [
       {
-        text: "Recién estoy comenzando a conocerte.",
-        duration: 2400,
+        text: "Hay personas que generan curiosidad desde las primeras conversaciones.",
+        duration: 2600,
         delay: 200
       },
       {
-        text: "Pero ya hubo algo que me dio mucha alegría escuchar.",
+        text: "Un pequeño rincón para descubrirte con calma.",
         duration: 2600,
-        delay: 2800
+        delay: 3000
+      },
+      {
+        text: "Bienvenida, Milagros.",
+        duration: 2200,
+        delay: 5800
       }
     ]
   },
 
-  // 1. FLORES Y DETALLES PRINCIPALES (Flor del Ascenso y futuros hitos)
+  // 1. FLORES Y SECCIONES PRINCIPALES
   flowers: [
     {
-      id: "flor-del-ascenso",
-      title: "Una flor por un nuevo comienzo",
-      subtitle: "Celebrando tu ascenso",
+      id: "conociendote",
+      title: "Hay algo bonito en empezar a conocerte",
+      subtitle: "Un comienzo tranquilo",
       date: "Septiembre 2024",
-      type: "achievement",
+      type: "dedication",
       flowerColor: "champagne",
       isPrimary: true,
       position3D: { x: 0, y: 0.65, z: -1.2 },
       card: {
-        title: "Una flor por un nuevo comienzo",
+        title: "Hay algo bonito en empezar a conocerte",
         paragraphs: [
-          "Cuando me contaste que te habían ascendido en tu trabajo, pensé que una noticia así merecía algo más que un mensaje rápido.",
-          "No conozco todavía todo el camino que recorriste para conseguirlo, pero sé que detrás de un ascenso hay esfuerzo, responsabilidad y muchas cosas que otras personas no siempre ven.",
-          "Así que este pequeño rincón del jardín empieza celebrando algo tuyo."
+          "No sé todavía todas las cosas que te hacen sonreír, qué momentos guardas con más cariño ni cuáles son esos pequeños detalles capaces de mejorar tu día.",
+          "Y quizás eso sea precisamente lo bonito: todavía tengo muchas cosas por descubrir de ti.",
+          "Hay algo en tu manera de ser, en nuestras conversaciones y en esos pequeños detalles que he podido conocer, que despertó en mí las ganas de seguir descubriendo un poco más de ti.",
+          "No quiero apresurar nada. Prefiero que las cosas bonitas tengan su propio tiempo."
         ],
-        highlight: "Felicitaciones por tu ascenso, Milagros.",
-        footnote: "Espero que sea el comienzo de muchas cosas buenas para ti."
+        highlight: "Me alegra haberte conocido, Milagros.",
+        highlightSub: "Y me gusta pensar que esto apenas comienza a escribirse.",
+        footnote: "Un rincón sencillo, hecho con calma y respeto para ti."
+      }
+    },
+    {
+      id: "belleza-tranquila",
+      title: "Hay bellezas que se descubren despacio",
+      subtitle: "Lo que no se ve a primera vista",
+      date: "Presente",
+      type: "reflection",
+      flowerColor: "rose",
+      isPrimary: false,
+      position3D: { x: -1.8, y: 0.55, z: -2.2 },
+      card: {
+        title: "Hay bellezas que se descubren despacio",
+        paragraphs: [
+          "Claro que hay algo bonito en una sonrisa, una mirada o una forma especial de expresarse.",
+          "Pero creo que lo verdaderamente interesante aparece después.",
+          "En la manera de hablar.\nEn cómo alguien trata a los demás.\nEn las cosas que le hacen ilusión.\nEn los pequeños gestos que quizá pasan desapercibidos.",
+          "Esas son las cosas que me gustaría ir descubriendo de ti."
+        ],
+        highlight: "La belleza más bonita es la que se descubre con el tiempo.",
+        highlightSub: "En cada pequeño detalle.",
+        footnote: "Con calma y sin prisa."
+      }
+    },
+    {
+      id: "recuerdo-ascenso",
+      title: "Un paso importante",
+      subtitle: "Un logro especial",
+      date: "Septiembre 2024",
+      type: "memory",
+      flowerColor: "gold",
+      isPrimary: false,
+      position3D: { x: 1.8, y: 0.55, z: -2.4 },
+      card: {
+        title: "Un paso importante",
+        paragraphs: [
+          "Cuando me contaste sobre tu ascenso en el trabajo, me dio mucha alegría escucharte.",
+          "Sé que detrás de cada logro hay esfuerzo, responsabilidad y dedicación, y me pareció un bonito detalle recordar aquí ese paso que diste."
+        ],
+        highlight: "Un momento para recordar y celebrar.",
+        highlightSub: "Uno de los primeros recuerdos compartidos.",
+        footnote: "Celebrar a quienes hacen las cosas bien siempre es un buen plan."
       }
     }
   ],
 
-  // 2. ESPACIOS VACÍOS / POR FLORECER (Representan que apenas están empezando a conocerse)
+  // 2. ESPACIOS VACÍOS / POR FLORECER ("Momentos que todavía no existen")
   emptyPlots: [
     {
       id: "plot-1",
+      title: "Momentos que todavía no existen",
       position3D: { x: -2.6, y: 0.2, z: -3.2 },
       phrases: [
-        "Aquí todavía falta una historia.",
-        "Este espacio espera un nuevo momento.",
-        "Apenas estamos comenzando a escribir los primeros recuerdos."
+        "Este espacio está casi vacío.",
+        "Y me gusta que sea así.",
+        "Significa que todavía quedan conversaciones, lugares, fotografías y pequeños momentos que podrían algún día llegar hasta aquí.",
+        "No quiero inventar recuerdos antes de vivirlos.",
+        "Prefiero dejarles un lugar por si algún día llegan."
       ]
     },
     {
       id: "plot-2",
+      title: "Momentos que todavía no existen",
       position3D: { x: 2.8, y: 0.2, z: -3.4 },
       phrases: [
-        "Algunas flores todavía no tienen nombre.",
-        "Un espacio reservado para futuras risas o anécdotas compartidas."
+        "Este espacio está casi vacío.",
+        "Y me gusta que sea así.",
+        "Significa que todavía quedan conversaciones, lugares, fotografías y pequeños momentos que podrían algún día llegar hasta aquí.",
+        "No quiero inventar recuerdos antes de vivirlos.",
+        "Prefiero dejarles un lugar por si algún día llegan."
       ]
     },
     {
       id: "plot-3",
+      title: "Momentos que todavía no existen",
       position3D: { x: -1.4, y: 0.2, z: -6.2 },
       phrases: [
-        "Este rincón crecerá a su propio tiempo.",
-        "Las mejores cosas se construyen sin prisa y con calma."
+        "Este espacio está casi vacío.",
+        "Y me gusta que sea así.",
+        "Significa que todavía quedan conversaciones, lugares, fotografías y pequeños momentos que podrían algún día llegar hasta aquí.",
+        "No quiero inventar recuerdos antes de vivirlos.",
+        "Prefiero dejarles un lugar por si algún día llegan."
       ]
     }
   ],
 
-  // 3. LA BANCA DE LOS MENSAJES ("Para cuando quieras detenerte un momento")
+  // 3. LA BANCA DE LAS NOTAS ("Para cuando quieras detenerte un momento")
   bench: {
     title: "Para cuando quieras detenerte un momento",
-    subtitle: "Tres notas para leer con calma.",
+    subtitle: "Cinco pensamientos para leer con calma.",
     position3D: { x: 3.0, y: 0.5, z: -1.6 },
     notes: [
       {
         id: 1,
-        content: "Me alegró que quisieras compartir conmigo una noticia tan importante."
+        content: "Hay personas que generan curiosidad desde las primeras conversaciones."
       },
       {
         id: 2,
-        content: "Espero seguir descubriendo poco a poco las cosas que te hacen sonreír."
+        content: "No quiero conocerte deprisa. Prefiero descubrirte con calma."
       },
       {
         id: 3,
-        content: "Las mejores personas no se conocen de golpe. Se van descubriendo."
+        content: "Las pequeñas cosas suelen decir mucho más que las grandes palabras."
+      },
+      {
+        id: 4,
+        content: "Todavía sé poco de ti, pero me gusta lo que voy descubriendo."
+      },
+      {
+        id: 5,
+        content: "Quizás los mejores recuerdos empiezan simplemente con una buena conversación."
       }
     ]
   },
 
-  // 4. FUENTE DE LOS PEQUEÑOS DETALLES (Estanque de agua serena)
+  // 4. FUENTE DE LOS PEQUEÑOS DETALLES
   fountain: {
     title: "Fuente de los pequeños detalles",
     subtitle: "Toca el agua para descubrir un pensamiento.",
     position3D: { x: -3.2, y: 0.35, z: -1.4 },
     thoughts: [
-      "A veces los logros más valiosos son aquellos que se consiguen con constancia silenciosa.",
-      "Prestar atención a los detalles es una forma sincera de demostrar que alguien te importa.",
-      "Cada persona tiene su propio ritmo y su propia luz; vale la pena tomarse el tiempo de apreciarlas.",
-      "Un día normal puede convertirse en un buen día con una buena noticia.",
-      "Hay conversaciones que, sin proponérselo, dejan una sensación de calma que dura horas.",
-      "Celebrar a quienes hacen las cosas bien siempre es un buen plan."
+      "Conocer a alguien también significa aprender a escuchar.",
+      "Hay conversaciones que uno recuerda sin saber exactamente por qué.",
+      "Los detalles pequeños suelen ser los que más se quedan.",
+      "No todo lo bonito necesita suceder deprisa.",
+      "A veces una persona simplemente despierta ganas de saber un poco más de ella.",
+      "Las historias más bonitas normalmente empiezan sin saber cómo terminarán."
     ]
   },
 
-  // 5. GALERÍA DE MOMENTOS (Preparada para futuras fotos reales)
+  // 5. GALERÍA DE MOMENTOS
   gallery: {
     title: "Galería de momentos",
     emptyState: {
-      paragraphs: [
-        "Todavía no hay muchas fotografías aquí.",
-        "Y quizás eso sea justamente lo bonito.",
-        "Hay momentos que todavía no han sucedido."
-      ]
+      title: "Galería de momentos",
+      subtitle: "Todo álbum comienza antes de tener su primera fotografía.",
+      description: "Por ahora, este espacio simplemente espera."
     },
     moments: []
   },
 
-  // 6. ALGO NUEVO PARA TI (Farol especial con sorpresa)
+  // 6. SECCIÓN FINAL / CIERRE ESPECIAL ("Sin prisa")
+  finalLetter: {
+    title: "Sin prisa",
+    subtitle: "Un pequeño cierre",
+    paragraphs: [
+      "No sé qué cosas iremos descubriendo mientras nos conocemos.",
+      "Y justamente por eso no quiero adelantar capítulos.",
+      "Prefiero disfrutar las conversaciones, las pequeñas coincidencias y todos esos detalles que solo aparecen cuando uno se toma el tiempo de conocer realmente a alguien."
+    ],
+    highlight: "Si el tiempo me da la oportunidad, me gustaría seguir conociéndote.",
+    signOff: "Para Milagros"
+  },
+
+  // 7. ALGO NUEVO PARA TI (Farol especial)
   newDetailSurprise: {
     hasNewSurprise: false,
     lampPosition3D: { x: -0.5, y: 1.3, z: -4.5 },
@@ -139,7 +219,7 @@ export const gardenData = {
       badge: "Nuevo detalle",
       title: "Un detalle pensado para hoy",
       date: "Hoy",
-      message: "Un mensaje especial o enlace a una sorpresa preparada para Milagros.",
+      message: "Un mensaje especial preparado con calma para Milagros.",
       actionButton: {
         enabled: false,
         text: "Ver sorpresa",
@@ -148,7 +228,7 @@ export const gardenData = {
     }
   },
 
-  // 7. CAMINO SECRETO (Sendero secundario preparado para el futuro)
+  // 8. CAMINO SECRETO (Sendero secundario)
   secretPath: {
     unlocked: false,
     position3D: { x: 1.6, y: 0.45, z: -7.8 },

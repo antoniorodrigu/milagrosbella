@@ -93,6 +93,7 @@ export class IntroScreen {
         <div class="intro-ornament intro-step-1"></div>
         <h1 class="intro-title intro-step-2">Para ${gardenData.dedication.recipient}</h1>
         <p class="intro-subtitle intro-step-3">${gardenData.dedication.subtitle}</p>
+        <p class="intro-discreet intro-step-3">${gardenData.dedication.discreet}</p>
         <div class="intro-step-4">
           <button class="btn-intro-enter" id="btn-enter-garden" type="button" aria-label="Entrar al jardín">
             ${gardenData.dedication.enterButtonText}

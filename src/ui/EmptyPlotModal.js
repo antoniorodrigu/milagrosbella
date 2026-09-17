@@ -27,14 +27,14 @@ export class EmptyPlotModal {
           <span>Un espacio que espera</span>
         </div>
 
-        <h2 class="card-title" style="margin-bottom: 24px;">Un rincón por florecer</h2>
+        <h2 class="card-title" style="margin-bottom: 24px;">Momentos que todavía no existen</h2>
 
         <div id="empty-plot-phrases" style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px;">
           <!-- Phrases -->
         </div>
 
         <p class="card-footnote">
-          Este jardín apenas comienza. Nuevas flores y recuerdos aparecerán conforme tengamos más historias.
+          No quiero inventar recuerdos antes de vivirlos. Prefiero dejarles un lugar por si algún día llegan.
         </p>
       </div>
     `;
@@ -60,13 +60,13 @@ export class EmptyPlotModal {
   open(plotData) {
     const phrasesContainer = this.element.querySelector('#empty-plot-phrases');
     const phrases = plotData?.phrases || [
-      "Aquí todavía falta una historia.",
-      "Este espacio espera un nuevo momento.",
-      "Algunas flores todavía no tienen nombre."
+      "Este espacio está casi vacío.",
+      "Y me gusta que sea así.",
+      "Significa que todavía quedan conversaciones, lugares, fotografías y pequeños momentos que podrían algún día llegar hasta aquí."
     ];
 
     phrasesContainer.innerHTML = phrases
-      .map(p => `<div style="font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; color: var(--text-muted);">“${p}”</div>`)
+      .map(p => `<div style="font-family: var(--font-serif); font-size: 1.22rem; font-style: italic; color: var(--text-muted); line-height: 1.55;">“${p}”</div>`)
       .join('');
 
     this.element.classList.add('is-open');
