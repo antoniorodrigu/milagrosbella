@@ -687,49 +687,416 @@
 }
 
 /* --------------------------------------------------------------------------
-   7. FOUNTAIN INTERACTION
+   7. FOUNTAIN OF DETAIL (POETIC EDITORIAL WATER EXPERIENCE)
    -------------------------------------------------------------------------- */
-.fountain-interactive-area {
+.fountain-experience-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 35%, #2A0714 0%, #17050E 62%, #0C0207 100%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+  padding: 24px 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fountain-experience-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Minimal Floating Close Button */
+.fountain-close-btn {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: rgba(201, 138, 156, 0.7);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  transition: color 0.25s ease, transform 0.25s ease;
+  z-index: 10;
+}
+
+.fountain-close-btn:hover {
+  color: #F2E7E1;
+  transform: translateY(-1px);
+}
+
+.fountain-close-btn svg {
+  stroke-width: 1.6;
+  transition: stroke 0.25s ease;
+}
+
+/* Ambient Botanical and Water Line Accents (Sides) */
+.fountain-bg-accents {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.fountain-accent-branch {
+  position: absolute;
+  opacity: 0.7;
+  transition: opacity 0.8s ease;
+}
+
+.fountain-accent-branch.branch-left {
+  left: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.fountain-accent-branch.branch-right {
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%) scaleX(-1);
+}
+
+/* Central Stage - Clean, Open, Free-breathing */
+.fountain-stage {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 18px;
-  padding: 14px 0;
+  margin: auto;
+  padding: 20px 0;
+  z-index: 2;
 }
 
-.fountain-water-btn {
-  position: relative;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 40% 40%, rgba(120, 190, 210, 0.25), rgba(18, 32, 38, 0.7));
-  border: 1px solid rgba(130, 210, 230, 0.35);
+/* 1. Header (Editorial, Pure Typography, No Enclosure) */
+.fountain-header {
+  margin-bottom: 26px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #c4effa;
-  transition: all var(--dur-normal);
 }
 
-.fountain-water-btn:hover {
-  border-color: rgba(140, 220, 240, 0.6);
-  box-shadow: 0 0 22px rgba(120, 200, 220, 0.3);
-  transform: scale(1.04);
+.fountain-eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #C98A9C;
+  opacity: 0.9;
+  margin-bottom: 10px;
 }
 
-.fountain-thought-box {
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.fountain-title {
   font-family: var(--font-serif);
-  font-size: 1.18rem;
+  font-size: clamp(1.65rem, 3.8vw, 2.35rem);
+  font-weight: 300;
+  color: #F2E7E1;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0 0 10px 0;
+  text-shadow: 0 2px 24px rgba(42, 7, 20, 0.8);
+}
+
+.fountain-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  font-weight: 300;
   font-style: italic;
-  line-height: 1.6;
-  color: var(--text-pure);
-  padding: 12px;
+  color: rgba(242, 231, 225, 0.65);
+  margin: 0;
+  max-width: 440px;
+  line-height: 1.5;
+}
+
+/* 2. Visual Water Surface (CSS & SVG Pool of Reflections) */
+.fountain-water-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 24px 0;
+}
+
+.fountain-water-surface {
+  position: relative;
+  width: 270px;
+  height: 145px;
+  cursor: pointer;
+  border-radius: 50%;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.fountain-water-surface:hover {
+  transform: scale(1.025);
+  filter: brightness(1.08) drop-shadow(0 12px 28px rgba(84, 21, 42, 0.45));
+}
+
+.fountain-water-surface:active,
+.fountain-water-surface.is-pulsing {
+  transform: scale(0.99);
+  filter: brightness(1.18) drop-shadow(0 8px 32px rgba(201, 138, 156, 0.4));
+}
+
+.fountain-water-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  display: block;
+}
+
+/* Ambient Gentle Pulsing of Concentric Rings */
+.water-ring {
+  transform-origin: 130px 70px;
+  transition: stroke-opacity 0.6s ease;
+}
+
+.water-ring.ring-1 {
+  animation: waterRingBreath1 6s ease-in-out infinite;
+}
+
+.water-ring.ring-2 {
+  animation: waterRingBreath2 5s ease-in-out infinite 0.8s;
+}
+
+.water-ring.ring-3 {
+  animation: waterRingBreath3 4s ease-in-out infinite 1.6s;
+}
+
+@keyframes waterRingBreath1 {
+  0%, 100% { stroke-opacity: 0.2; transform: scale(1); }
+  50% { stroke-opacity: 0.38; transform: scale(1.02); }
+}
+
+@keyframes waterRingBreath2 {
+  0%, 100% { stroke-opacity: 0.16; transform: scale(1); }
+  50% { stroke-opacity: 0.32; transform: scale(1.035); }
+}
+
+@keyframes waterRingBreath3 {
+  0%, 100% { stroke-opacity: 0.22; transform: scale(1); }
+  50% { stroke-opacity: 0.45; transform: scale(1.05); }
+}
+
+/* Water Sheen Highlight */
+.water-sheen {
+  animation: waterSheenDrift 7s ease-in-out infinite alternate;
+}
+
+@keyframes waterSheenDrift {
+  0% { opacity: 0.18; transform: translateY(0); }
+  100% { opacity: 0.38; transform: translateY(-2px); }
+}
+
+/* Floating Petal on Surface */
+.fountain-floating-petal {
+  position: absolute;
+  top: 38%;
+  right: 28%;
+  pointer-events: none;
+  animation: petalFloat 8s ease-in-out infinite;
+}
+
+@keyframes petalFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.55; }
+  50% { transform: translate(-4px, 3px) rotate(8deg); opacity: 0.85; }
+}
+
+/* Ripples Layer (Dynamic touch waves) */
+.fountain-ripples-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.fountain-ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px solid rgba(242, 231, 225, 0.75);
+  box-shadow: 0 0 14px rgba(201, 138, 156, 0.45), inset 0 0 10px rgba(201, 167, 106, 0.3);
+  transform: translate(-50%, -50%) scale(0.05);
+  opacity: 0.9;
+  pointer-events: none;
+  animation: rippleSpread 1100ms cubic-bezier(0.12, 0.8, 0.32, 1) forwards;
+}
+
+@keyframes rippleSpread {
+  0% {
+    transform: translate(-50%, -50%) scale(0.08);
+    opacity: 0.95;
+  }
+  60% {
+    opacity: 0.65;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* 3. Reflection / Thought (Pure Typography, Open Space) */
+.fountain-reflection-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 120px;
+  margin-top: 8px;
+}
+
+.fountain-thought-prose {
+  font-family: var(--font-serif);
+  font-size: clamp(1.28rem, 3.2vw, 1.68rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.62;
+  color: #F2E7E1;
+  margin: 0 0 24px 0;
+  padding: 0 12px;
+  text-align: center;
+  letter-spacing: -0.005em;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.fountain-thought-prose.is-fading {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* 4. Minimal Text Link "Descubrir otro pensamiento" */
+.fountain-next-link {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 6px 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #C98A9C;
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  transition: color 0.28s ease;
+}
+
+.fountain-next-link span {
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.fountain-next-link span::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.45;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+  transform-origin: center;
+}
+
+.fountain-next-link:hover {
+  color: #F2E7E1;
+}
+
+.fountain-next-link:hover span::after {
+  opacity: 0.9;
+  transform: scaleX(1.08);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .fountain-experience-overlay {
+    padding: 24px 16px;
+    align-items: center;
+  }
+
+  .fountain-close-btn {
+    top: 18px;
+    right: 18px;
+    padding: 6px;
+  }
+
+  .fountain-close-label {
+    display: none;
+  }
+
+  .fountain-accent-branch {
+    display: none;
+  }
+
+  .fountain-water-surface {
+    width: 210px;
+    height: 115px;
+  }
+
+  .fountain-header {
+    margin-bottom: 20px;
+  }
+
+  .fountain-eyebrow {
+    font-size: 0.7rem;
+    margin-bottom: 6px;
+  }
+
+  .fountain-title {
+    font-size: 1.55rem;
+    margin-bottom: 6px;
+  }
+
+  .fountain-subtitle {
+    font-size: 0.92rem;
+  }
+
+  .fountain-reflection-wrap {
+    min-height: 100px;
+    margin-top: 4px;
+  }
+
+  .fountain-thought-prose {
+    font-size: 1.2rem;
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  .fountain-next-link {
+    font-size: 0.95rem;
+  }
 }
 
 /* --------------------------------------------------------------------------

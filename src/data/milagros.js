@@ -17,18 +17,8 @@ export const gardenData = {
     initialTourSubtitles: [
       {
         text: "Hay personas que generan curiosidad desde las primeras conversaciones.",
-        duration: 2600,
-        delay: 200
-      },
-      {
-        text: "Un pequeño rincón para descubrirte con calma.",
-        duration: 2600,
-        delay: 3000
-      },
-      {
-        text: "Bienvenida, Milagros.",
-        duration: 2200,
-        delay: 5800
+        duration: 3400,
+        delay: 400
       }
     ]
   },
@@ -173,15 +163,16 @@ export const gardenData = {
   // 4. FUENTE DE LOS PEQUEÑOS DETALLES
   fountain: {
     title: "Fuente de los pequeños detalles",
-    subtitle: "Toca el agua para descubrir un pensamiento.",
+    subtitle: "Toca el agua y deja que aparezca un pensamiento.",
     position3D: { x: -3.2, y: 0.35, z: -1.4 },
     thoughts: [
-      "Conocer a alguien también significa aprender a escuchar.",
+      "Las historias más bonitas normalmente empiezan sin saber cómo terminarán.",
       "Hay conversaciones que uno recuerda sin saber exactamente por qué.",
-      "Los detalles pequeños suelen ser los que más se quedan.",
-      "No todo lo bonito necesita suceder deprisa.",
-      "A veces una persona simplemente despierta ganas de saber un poco más de ella.",
-      "Las historias más bonitas normalmente empiezan sin saber cómo terminarán."
+      "Los detalles pequeños suelen ser los que más se quedan en el alma.",
+      "A veces una persona simplemente despierta ganas de descubrir todo su mundo.",
+      "Conocer a alguien también significa aprender a contemplar con el corazón.",
+      "Hay miradas que transmiten calma incluso en medio del ruido.",
+      "Las cosas más bellas de la vida florecen con calma y sinceridad."
     ]
   },
 
@@ -196,17 +187,17 @@ export const gardenData = {
     moments: []
   },
 
-  // 6. SECCIÓN FINAL / CIERRE ESPECIAL ("Sin prisa")
+  // 6. SECCIÓN FINAL / CIERRE ESPECIAL
   finalLetter: {
-    title: "Sin prisa",
-    subtitle: "Un pequeño cierre",
+    title: "Ecos del corazón",
+    subtitle: "Un verso para ti",
     paragraphs: [
-      "No sé qué cosas iremos descubriendo mientras nos conocemos.",
-      "Y justamente por eso no quiero adelantar capítulos.",
-      "Prefiero disfrutar las conversaciones, las pequeñas coincidencias y todos esos detalles que solo aparecen cuando uno se toma el tiempo de conocer realmente a alguien."
+      "Dicen que el destino escribe con luz de estrellas las historias más hermosas, y desde que coincidimos, cada uno de tus detalles se convirtió en mi poesía favorita.",
+      "Hay una magia única en tu sonrisa y una dulzura infinita en tu forma de ser, de esas que acarician el alma y convierten cualquier instante en un recuerdo inolvidable.",
+      "No hacen falta infinitas palabras cuando el sentimiento nace con tanta pureza; solo me basta contemplar tu alegría para saber que el mundo es infinitamente más bello porque tú estás en él."
     ],
-    highlight: "Si el tiempo me da la oportunidad, me gustaría seguir conociéndote.",
-    signOff: "Para Milagros"
+    highlight: "Milagros, eres esa melodía perfecta que hace florecer los latidos de mi corazón.",
+    signOff: "Con todo mi corazón, para Milagros"
   },
 
   // 7. ALGO NUEVO PARA TI (Farol especial)

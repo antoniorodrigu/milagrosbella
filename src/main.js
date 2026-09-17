@@ -103,6 +103,7 @@ class App {
     // Modals
     const onModalClose = () => {
       this.navigation.setActiveSection('jardin');
+      this.tourSubtitles.showFloatingMessage('Bienvenida, Milagros', 3200);
     };
 
     this.flowerModal = new FlowerModal(this.container, onModalClose);
@@ -145,18 +146,17 @@ class App {
     // Start initial cinematic camera travel
     this.cameraDirector.startInitialCinematicTour(
       () => {
-        // Play subtle subtitles along the path
-        this.tourSubtitles.playSubtitles();
-      },
-      () => {
-        // Tour completed: gently open the Promotion Flower modal!
-        const primaryFlower = gardenData.flowers.find(f => f.isPrimary) || gardenData.flowers[0];
-        if (primaryFlower) {
-          setTimeout(() => {
+        // Play subtitles first; only when subtitle finishes, open the card (flower modal)!
+        this.tourSubtitles.playSubtitles(() => {
+          const primaryFlower = gardenData.flowers.find(f => f.isPrimary) || gardenData.flowers[0];
+          if (primaryFlower) {
             this.flowerModal.open(primaryFlower);
             this.navigation.setActiveSection('detalles');
-          }, 300);
-        }
+          }
+        });
+      },
+      () => {
+        // Camera cinematic tour positioning complete
       }
     );
   }

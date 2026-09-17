@@ -36,62 +36,6 @@ export class AccessibilityView {
       </div>
     `;
 
-    // 1. Flowers HTML - pure editorial, zero nested cards
-    const flowersHtml = gardenData.flowers.map(f => {
-      const paragraphsHtml = (f.card.paragraphs || [])
-        .map(p => `<p class="letter-paragraph">${p.replace(/\n/g, '<br/>')}</p>`)
-        .join('');
-
-      const highlightHtml = f.card.highlight
-        ? `
-          <div class="letter-quote-block">
-            <div class="letter-quote-glyph" aria-hidden="true">“</div>
-            <p class="letter-quote-highlight">${f.card.highlight}</p>
-            ${f.card.highlightSub ? `<p class="letter-quote-sub">${f.card.highlightSub}</p>` : ''}
-            <div class="letter-quote-glyph close-glyph" aria-hidden="true">”</div>
-          </div>
-        `
-        : '';
-
-      const footnoteHtml = f.card.footnote
-        ? `<p class="letter-footnote">${f.card.footnote}</p>`
-        : '';
-
-      return `
-        <div class="letter-flower-article">
-          <span class="letter-kicker">${f.subtitle || 'Un comienzo tranquilo'}</span>
-          <h3 class="letter-article-title">${f.card.title}</h3>
-          
-          <div class="letter-article-prose">
-            ${paragraphsHtml}
-            ${highlightHtml}
-            ${footnoteHtml}
-          </div>
-        </div>
-      `;
-    }).join('');
-
-    // 2. Bench Notes HTML - numbered romantic verses
-    const romanNumerals = ['I', 'II', 'III', 'IV', 'V'];
-    const benchNotesHtml = gardenData.bench.notes.map((n, i) => `
-      <div class="letter-verse-item">
-        <span class="letter-verse-number">${romanNumerals[i] || i + 1}.</span>
-        <p class="letter-verse-text">“${n.content}”</p>
-      </div>
-    `).join('');
-
-    // 3. Fountain Thoughts HTML - clean poetic list
-    const fountainThoughtsHtml = gardenData.fountain.thoughts.map((t) => `
-      <li class="letter-thought-item">
-        <span class="thought-bullet" aria-hidden="true">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="6" fill="rgba(247, 184, 198, 0.45)"/>
-          </svg>
-        </span>
-        <span class="thought-content">“${t}”</span>
-      </li>
-    `).join('');
-
     this.element.innerHTML = `
       <div class="letter-wrapper">
         <!-- Top Minimal Header -->
@@ -115,68 +59,7 @@ export class AccessibilityView {
           ${createDivider(true)}
         </div>
 
-        <!-- Section 1: Detalles y Flores -->
-        <section class="letter-section">
-          <div class="letter-section-header">
-            <h2 class="letter-section-title">Detalles y Flores</h2>
-            <p class="letter-section-subtitle">Flores cultivadas con calma y pensamientos para conocerte.</p>
-          </div>
-          
-          <div class="letter-section-content">
-            ${flowersHtml}
-          </div>
-        </section>
-
-        ${createDivider(false)}
-
-        <!-- Section 2: Notas de la banca -->
-        <section class="letter-section">
-          <div class="letter-section-header">
-            <h2 class="letter-section-title">Notas de la banca</h2>
-            <p class="letter-section-subtitle">Cinco pensamientos para leer con calma.</p>
-          </div>
-
-          <div class="letter-verses-flow">
-            ${benchNotesHtml}
-          </div>
-        </section>
-
-        ${createDivider(false)}
-
-        <!-- Section 3: Reflexiones de la fuente -->
-        <section class="letter-section">
-          <div class="letter-section-header">
-            <h2 class="letter-section-title">Reflexiones de la fuente</h2>
-            <p class="letter-section-subtitle">Pequeños pensamientos inspirados en la calma y el agua serena.</p>
-          </div>
-
-          <ul class="letter-thoughts-list">
-            ${fountainThoughtsHtml}
-          </ul>
-        </section>
-
-        ${createDivider(false)}
-
-        <!-- Section 4: Momentos que todavía no existen -->
-        <section class="letter-section">
-          <div class="letter-section-header">
-            <h2 class="letter-section-title">Momentos que todavía no existen</h2>
-            <p class="letter-section-subtitle">Espacios que esperan nuevas historias por escribir.</p>
-          </div>
-
-          <div class="letter-future-block">
-            <p class="letter-future-line">“Este espacio está casi vacío.”</p>
-            <p class="letter-future-line highlight-phrase">“Y me gusta que sea así.”</p>
-            <p class="letter-future-line">“Significa que todavía quedan conversaciones, lugares, fotografías y pequeños momentos que podrían algún día llegar hasta aquí.”</p>
-            <p class="letter-future-subtext">
-              No quiero inventar recuerdos antes de vivirlos. Prefiero dejarles un lugar por si algún día llegan.
-            </p>
-          </div>
-        </section>
-
-        ${createDivider(true)}
-
-        <!-- Section 5: Cierre especial - Sin prisa -->
+        <!-- Section: Cierre especial - Sin prisa -->
         <section class="letter-section" style="text-align: center;">
           <div class="letter-section-header">
             <h2 class="letter-section-title">${gardenData.finalLetter.title}</h2>
