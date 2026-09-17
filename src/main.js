@@ -24,12 +24,37 @@ import { AccessibilityView } from './ui/AccessibilityView.js';
 
 class App {
   constructor() {
+    console.log('[APP] main.js iniciado');
+
     this.container = document.getElementById('app');
+    if (!this.container) {
+      console.error('[APP] ERROR: No se encontró el elemento #app en el DOM.');
+      throw new Error('No existe #app');
+    }
+    console.log('[APP] DOM listo');
+
     this.canvas = document.getElementById('webgl-canvas');
 
-    this.initThree();
-    this.initUI();
-    this.initAnimationLoop();
+    // 1. Inicializar UI primero (la portada/intro SIEMPRE se muestra independientemente de 3D o backend)
+    try {
+      console.log('[APP] creando intro y componentes de UI');
+      this.initUI();
+    } catch (uiError) {
+      console.error('[APP] Error al inicializar UI:', uiError);
+    }
+
+    // 2. Inicializar Three.js / WebGL protegido en try/catch (un fallo de GPU o Three.js nunca romperá la portada)
+    try {
+      console.log('[APP] creando GardenScene');
+      if (this.canvas) {
+        this.initThree();
+        this.initAnimationLoop();
+      }
+    } catch (threeError) {
+      console.error('[APP] GardenScene error (la portada y lectura continúan activas):', threeError);
+    }
+
+    console.log('[APP] aplicación montada');
   }
 
   initThree() {
@@ -238,7 +263,13 @@ class App {
   }
 }
 
-// Bootstrap application on DOM ready
-window.addEventListener('DOMContentLoaded', () => {
+// Bootstrap application reliably
+function bootstrap() {
   new App();
-});
+}
+
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', bootstrap);
+} else {
+  bootstrap();
+}
