@@ -1,0 +1,134 @@
+/* ==========================================================================
+   UN JARDÍN PARA MILAGROS - KEYFRAME ANIMATIONS & MOVEMENTS
+   ========================================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   CENTRAL WATERMARK HEART PULSE (4.8s loop)
+   -------------------------------------------------------------------------- */
+@keyframes centralHeartPulse {
+  0% {
+    transform: translate(-50%, -52%) scale(1);
+    opacity: 0.14;
+  }
+  50% {
+    transform: translate(-50%, -52%) scale(1.045);
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate(-50%, -52%) scale(1);
+    opacity: 0.14;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   1. FLOAT UP: Starts at bottom, gently rises to top with horizontal drift
+   -------------------------------------------------------------------------- */
+@keyframes floatUp {
+  0% {
+    transform: translate3d(0, 105vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: var(--max-opacity, 0.65);
+  }
+  50% {
+    transform: translate3d(var(--drift-x, 22px), 50vh, 0) rotate(var(--rot, 5deg));
+    opacity: var(--max-opacity, 0.65);
+  }
+  88% {
+    opacity: var(--max-opacity, 0.65);
+  }
+  100% {
+    transform: translate3d(calc(var(--drift-x, 22px) * -0.6), -12vh, 0) rotate(calc(var(--rot, 5deg) * -1));
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. SOFT DRIFT: Local floating & horizontal/vertical swaying
+   -------------------------------------------------------------------------- */
+@keyframes softDrift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: calc(var(--base-opacity, 0.5) * 0.7);
+  }
+  30% {
+    transform: translate3d(16px, -24px, 0) rotate(5deg);
+    opacity: var(--base-opacity, 0.5);
+  }
+  65% {
+    transform: translate3d(-14px, -45px, 0) rotate(-4deg);
+    opacity: calc(var(--base-opacity, 0.5) * 0.85);
+  }
+  85% {
+    transform: translate3d(8px, -18px, 0) rotate(2deg);
+    opacity: var(--base-opacity, 0.5);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: calc(var(--base-opacity, 0.5) * 0.7);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. GENTLE PULSE: Slow continuous subtle breathing scale
+   -------------------------------------------------------------------------- */
+@keyframes gentlePulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+/* Subtle background ambient variation */
+@keyframes ambientLightPulse {
+  0% {
+    opacity: 0.35;
+    transform: scale(0.96);
+  }
+  100% {
+    opacity: 0.75;
+    transform: scale(1.04);
+  }
+}
+
+.anim-fade-in {
+  animation: fadeIn 0.9s var(--ease-editorial) forwards;
+}
+
+.anim-fade-in-up {
+  animation: fadeInUp 0.9s var(--ease-editorial) forwards;
+}
